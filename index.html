@@ -13,7 +13,6 @@
   --paper2: #ede9df;
   --accent: #c8392b;
   --accent2: #2563eb;
-  --gold: #b8860b;
   --text: #2c2c3a;
   --muted: #7a7a8c;
   --border: rgba(28,28,46,0.12);
@@ -23,9 +22,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--paper);
   color: var(--text);
@@ -33,8 +30,6 @@ body {
   font-weight: 300;
   line-height: 1.9;
 }
-
-/* grain overlay */
 body::before {
   content: '';
   position: fixed;
@@ -45,7 +40,6 @@ body::before {
   opacity: 0.6;
 }
 
-/* ===== NAV ===== */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -58,40 +52,17 @@ nav {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--muted);
-}
-
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
+.nav-logo { font-family: var(--mono); font-size: 12px; letter-spacing: 2px; color: var(--muted); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--accent); }
 
-/* ===== HERO ===== */
 .hero {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-top: 80px;
 }
-
 .hero-left {
   padding: 100px 60px 100px 80px;
   display: flex;
@@ -99,458 +70,87 @@ nav {
   justify-content: center;
   border-right: 1px solid var(--border);
 }
-
 .hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--ink);
   margin-bottom: 32px;
   opacity: 0;
   animation: up 0.8s ease forwards;
 }
+.hero-desc { font-size: 15px; color: var(--muted); max-width: 420px; margin-bottom: 56px; opacity: 0; animation: up 0.8s ease 0.3s forwards; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; opacity: 0; animation: up 0.8s ease 0.45s forwards; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 1px; padding: 6px 14px; border: 1px solid var(--border); color: var(--muted); background: var(--paper2); }
 
-.hero-name {
-  font-family: var(--serif);
-  font-size: clamp(48px, 5vw, 80px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: var(--ink);
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: up 0.8s ease 0.15s forwards;
-}
-
-.hero-desc {
-  font-size: 15px;
-  color: var(--muted);
-  max-width: 420px;
-  margin-bottom: 56px;
-  opacity: 0;
-  animation: up 0.8s ease 0.3s forwards;
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  opacity: 0;
-  animation: up 0.8s ease 0.45s forwards;
-}
-
-.tag {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  background: var(--paper2);
-}
-
-.hero-right {
-  padding: 100px 80px 100px 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
-}
-
-.hero-stat {
-  padding: 40px 0;
-  border-bottom: 1px solid var(--border);
-  opacity: 0;
-  animation: up 0.7s ease forwards;
-}
-
+.hero-right { padding: 100px 80px 100px 60px; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+.hero-stat { padding: 40px 0; border-bottom: 1px solid var(--border); opacity: 0; animation: up 0.7s ease forwards; }
 .hero-stat:first-child { border-top: 1px solid var(--border); }
 .hero-stat:nth-child(1) { animation-delay: 0.2s; }
 .hero-stat:nth-child(2) { animation-delay: 0.35s; }
 .hero-stat:nth-child(3) { animation-delay: 0.5s; }
-.hero-stat:nth-child(4) { animation-delay: 0.65s; }
+.hero-stat-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.hero-stat-value { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+.hero-stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-.hero-stat-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
+.section { padding: 120px 80px; max-width: 1300px; margin: 0 auto; }
+.section-header { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; margin-bottom: 80px; }
+.section-num { font-family: var(--mono); font-size: 13px; letter-spacing: 2px; color: var(--accent); padding-top: 6px; }
+.section-title { font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); font-weight: 700; color: var(--ink); letter-spacing: -1px; line-height: 1.2; }
+.section-title span { display: block; font-size: 14px; font-family: var(--sans); font-weight: 300; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; }
 
-.hero-stat-value {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.2;
-}
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 80px; }
 
-.hero-stat-sub {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* ===== SECTION ===== */
-.section {
-  padding: 120px 80px;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.section-header {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 32px;
-  align-items: start;
-  margin-bottom: 80px;
-}
-
-.section-num {
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: var(--accent);
-  padding-top: 6px;
-}
-
-.section-title {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -1px;
-  line-height: 1.2;
-}
-
-.section-title span {
-  display: block;
-  font-size: 14px;
-  font-family: var(--sans);
-  font-weight: 300;
-  letter-spacing: 1px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-/* ===== DIVIDER ===== */
-.divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0 80px;
-}
-
-/* ===== TIMELINE (LEARNING LOG) ===== */
-.timeline {
-  position: relative;
-  padding-left: 40px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 1px;
-  background: var(--border);
-}
-
-.tl-item {
-  position: relative;
-  padding: 0 0 64px 48px;
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
+.timeline { position: relative; padding-left: 40px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--border); }
+.tl-item { position: relative; padding: 0 0 64px 48px; opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .tl-item.visible { opacity: 1; transform: translateY(0); }
-
-.tl-dot {
-  position: absolute;
-  left: -5px; top: 8px;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 2px solid var(--accent);
-}
-
-.tl-date {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.tl-title {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-
-.tl-body {
-  font-size: 14px;
-  color: var(--muted);
-  max-width: 680px;
-  line-height: 1.9;
-  margin-bottom: 20px;
-}
-
-.tl-code {
-  background: var(--ink);
-  color: #a8d8a8;
-  font-family: var(--mono);
-  font-size: 12px;
-  padding: 20px 24px;
-  border-radius: 2px;
-  line-height: 1.8;
-  max-width: 600px;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-.tl-code::before {
-  content: attr(data-lang);
-  position: absolute;
-  top: 8px; right: 16px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #4a5568;
-  text-transform: uppercase;
-}
-
+.tl-dot { position: absolute; left: -5px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); }
+.tl-date { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
+.tl-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 12px; letter-spacing: -0.5px; }
+.tl-body { font-size: 14px; color: var(--muted); max-width: 680px; line-height: 1.9; margin-bottom: 20px; }
+.tl-code { background: var(--ink); color: #a8d8a8; font-family: var(--mono); font-size: 12px; padding: 20px 24px; border-radius: 2px; line-height: 1.8; max-width: 600px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.tl-code::before { content: attr(data-lang); position: absolute; top: 8px; right: 16px; font-size: 10px; letter-spacing: 2px; color: #4a5568; text-transform: uppercase; }
 .tl-code .kw { color: #81a2be; }
 .tl-code .fn { color: #b5bd68; }
 .tl-code .st { color: #f0c674; }
 .tl-code .cm { color: #4a5568; }
 .tl-code .num { color: #de935f; }
-
-.tl-result {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  padding: 10px 16px;
-  background: var(--paper2);
-  border-left: 3px solid var(--accent);
-}
-
-.tl-result .val {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.tl-ai-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-top: 16px;
-  padding: 16px 20px;
-  background: rgba(37,99,235,0.06);
-  border: 1px solid rgba(37,99,235,0.15);
-  font-size: 13px;
-  color: var(--muted);
-  max-width: 600px;
-}
-
-.tl-ai-note .icon {
-  font-size: 16px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
+.tl-result { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); padding: 10px 16px; background: var(--paper2); border-left: 3px solid var(--accent); }
+.tl-result .val { color: var(--ink); font-weight: 500; }
+.tl-ai-note { display: flex; align-items: flex-start; gap: 12px; margin-top: 16px; padding: 16px 20px; background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15); font-size: 13px; color: var(--muted); max-width: 600px; }
+.tl-ai-note .icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
 .tl-ai-note strong { color: var(--accent2); }
+.tl-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; padding: 4px 12px; background: var(--paper2); border: 1px solid var(--border); color: var(--muted); }
 
-.tl-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.chip {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 1px;
-  padding: 4px 12px;
-  background: var(--paper2);
-  border: 1px solid var(--border);
-  color: var(--muted);
-}
-
-/* ===== SKILLS GRID ===== */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-}
-
-.skill-card {
-  background: var(--paper);
-  padding: 48px 40px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s;
-}
-
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+.skill-card { background: var(--paper); padding: 48px 40px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s; }
 .skill-card:hover { background: var(--paper2); }
 .skill-card.visible { opacity: 1; transform: translateY(0); }
-
 .skill-icon { font-size: 28px; margin-bottom: 20px; }
+.skill-name { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+.skill-desc { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+.skill-bar-label { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; display: flex; justify-content: space-between; }
+.skill-bar-bg { height: 3px; background: var(--border); }
+.skill-bar { height: 100%; background: var(--accent); width: 0; transition: width 1.2s ease; }
 
-.skill-name {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-
-.skill-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.skill-bar-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--muted);
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.skill-bar-bg {
-  height: 3px;
-  background: var(--border);
-}
-
-.skill-bar {
-  height: 100%;
-  background: var(--accent);
-  width: 0;
-  transition: width 1.2s ease;
-}
-
-/* ===== WHAT NEXT ===== */
-.next-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-}
-
-.next-card {
-  background: var(--paper);
-  padding: 56px 48px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.next-card { background: var(--paper); padding: 56px 48px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .next-card.visible { opacity: 1; transform: translateY(0); }
+.next-num { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; }
+.next-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.5px; }
+.next-body { font-size: 14px; color: var(--muted); line-height: 1.9; }
 
-.next-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-
-.next-title {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 16px;
-  letter-spacing: -0.5px;
-}
-
-.next-body {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.9;
-}
-
-/* ===== CLOSING ===== */
-.closing {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 120px 80px;
-  text-align: center;
-}
-
-.closing-eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 32px;
-}
-
-.closing-message {
-  font-family: var(--serif);
-  font-size: clamp(24px, 3vw, 40px);
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -1px;
-  max-width: 720px;
-  margin: 0 auto 48px;
-}
-
-.closing-sub {
-  font-size: 14px;
-  color: rgba(245,242,235,0.5);
-  max-width: 560px;
-  margin: 0 auto 56px;
-  line-height: 1.9;
-}
-
-.closing-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--paper);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(245,242,235,0.3);
-  padding-bottom: 4px;
-  transition: border-color 0.2s;
-}
-
+.closing { background: var(--ink); color: var(--paper); padding: 120px 80px; text-align: center; }
+.closing-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; }
+.closing-message { font-family: var(--serif); font-size: clamp(24px, 3vw, 40px); font-weight: 700; line-height: 1.4; letter-spacing: -1px; max-width: 720px; margin: 0 auto 48px; }
+.closing-sub { font-size: 14px; color: rgba(245,242,235,0.5); max-width: 560px; margin: 0 auto 56px; line-height: 1.9; }
+.closing-link { display: inline-flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--paper); text-decoration: none; border-bottom: 1px solid rgba(245,242,235,0.3); padding-bottom: 4px; transition: border-color 0.2s; }
 .closing-link:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ===== FOOTER ===== */
-footer {
-  background: var(--ink2);
-  padding: 32px 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: rgba(245,242,235,0.3);
-  letter-spacing: 1px;
-}
-
-/* ===== ANIMATIONS ===== */
 @keyframes up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -559,12 +159,12 @@ footer {
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">YAMADA YUTA · ACTUARIAL CANDIDATE</div>
   <ul class="nav-links">
     <li><a href="#learning">学習記録</a></li>
     <li><a href="#skills">習得スキル</a></li>
+    <li><a href="#exam">試験への取組み</a></li>
     <li><a href="#next">今後の計画</a></li>
   </ul>
 </nav>
@@ -573,9 +173,8 @@ footer {
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">一次面接後の自主学習記録</div>
-    <h1 class="hero-name">面接後、<br>私はこう<br>動きました。</h1>
     <p class="hero-desc">
-      一次面接を終えて「アクチュアリーとして何ができるか」を問い直し、Pythonによる実務手法の独学を開始。AIツールを活用しながら、損保アクチュアリーの中核業務を自分の手で実装した記録です。
+      一次面接を終えていただいたフィードバックをもとに、自己学習が目に見える形ではなかったと反省しました。アクチュアリーへの理解を深めるべく、Pythonによる実務手法の独学を開始。AIツールを活用しながら損保アクチュアリーの中核業務を自分の手で実装し、今後も学習を継続していく姿勢をここにまとめます。
     </p>
     <div class="hero-tags">
       <span class="tag">Python 3.13</span>
@@ -589,11 +188,6 @@ footer {
   </div>
   <div class="hero-right">
     <div class="hero-stat">
-      <div class="hero-stat-label">Learning Period</div>
-      <div class="hero-stat-value">一次面接翌日〜</div>
-      <div class="hero-stat-sub">面接後すぐに行動に移した</div>
-    </div>
-    <div class="hero-stat">
       <div class="hero-stat-label">Methods Implemented</div>
       <div class="hero-stat-value">4つの手法</div>
       <div class="hero-stat-sub">GLM · IBNR · モンテカルロ · Bootstrap</div>
@@ -604,9 +198,9 @@ footer {
       <div class="hero-stat-sub">Claude AIでコードを書きながら原理を理解</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-label">Background</div>
-      <div class="hero-stat-value">営業職出身</div>
-      <div class="hero-stat-sub">数理・Python は入社後に本格習得予定</div>
+      <div class="hero-stat-label">継続学習の方針</div>
+      <div class="hero-stat-value">試験 × Python × AI</div>
+      <div class="hero-stat-sub">アクチュアリー試験を主軸に、PythonとAIコーディング（GitHub Copilot）も並行学習</div>
     </div>
   </div>
 </section>
@@ -625,36 +219,13 @@ footer {
 
   <div class="timeline">
 
-    <!-- STEP 0 -->
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-date">DAY 0 · 環境構築</div>
-      <div class="tl-title">まず「動く環境」を作ることから始めた</div>
-      <div class="tl-body">
-        Pythonすら触ったことがない状態からスタート。Anacondaのインストールでいきなりエラーが連続し、
-        <code style="background:var(--paper2);padding:2px 6px;font-family:var(--mono);font-size:12px;">Permission denied</code>、
-        パスが通らない、パッケージが見つからないなど複数の問題に直面した。
-        AIと一緒にエラーメッセージを読み解きながら一つずつ解決し、最終的にHomebrewを使ったインストールで環境を完成させた。
-      </div>
-      <div class="tl-ai-note">
-        <div class="icon">🤖</div>
-        <div><strong>AI活用ポイント：</strong>エラーメッセージをそのまま貼り付け、原因と解決策を対話形式で探った。「なぜそのコマンドが必要か」を毎回聞くことで、操作の意味を理解しながら進めた。</div>
-      </div>
-      <div class="tl-chips">
-        <span class="chip">Anaconda</span>
-        <span class="chip">Homebrew</span>
-        <span class="chip">Jupyter Notebook</span>
-        <span class="chip">zshrc</span>
-      </div>
-    </div>
-
     <!-- STEP 1 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">DAY 1 · 基礎</div>
       <div class="tl-title">純保険料の計算から始めた</div>
       <div class="tl-body">
-        最初に実装したのは収支相等の原則の計算。「アクチュアリーの仕事を理解したい」という動機から始め、pandas・matplotlibでのデータ集計・可視化まで一気に実装した。
+        初回のセッティングから始め、収支相等の原則をPythonで実装。pandas・matplotlibでのデータ集計・可視化まで一気に実装した。
       </div>
       <div class="tl-code" data-lang="python">
 <span class="cm"># 純保険料 = 事故率 × 平均損害額（収支相等の原則）</span>
@@ -778,7 +349,7 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
       </div>
     </div>
 
-    <!-- STEP 5: 総合演習 -->
+    <!-- STEP 5 -->
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">DAY 2 · 総合演習</div>
@@ -861,7 +432,7 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
     <div class="skill-card">
       <div class="skill-icon">🤖</div>
       <div class="skill-name">AI × Python 開発スタイル</div>
-      <div class="skill-desc">Claude AIとの対話でコードを書きながら、原理・エラー原因・改善案を並行して理解する開発スタイルを確立。入社初日から実践できる。</div>
+      <div class="skill-desc">Claude AIとの対話でコードを書きながら原理を理解。今後はGitHub Copilot（AIG損保の主要ツール）も活用し、業務効率化に即戦力として貢献する。</div>
       <div class="skill-bar-label"><span>習熟度</span><span>実戦レベル</span></div>
       <div class="skill-bar-bg"><div class="skill-bar" data-w="80"></div></div>
     </div>
@@ -870,10 +441,29 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
 
 <hr class="divider">
 
-<!-- SECTION 3: NEXT -->
-<section class="section" id="next">
+<!-- SECTION 3: EXAM -->
+<section class="section" id="exam">
   <div class="section-header">
     <div class="section-num">03 ——</div>
+    <div class="section-title">
+      <span>EXAM APPROACH</span>
+      試験への取組みと所感
+    </div>
+  </div>
+
+  <div class="tl-item visible" style="padding-left: 0;">
+    <div class="tl-body" style="max-width: 800px; font-size: 15px;">
+      （過去問演習の内容をもとに随時更新予定）
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SECTION 4: NEXT -->
+<section class="section" id="next">
+  <div class="section-header">
+    <div class="section-num">04 ——</div>
     <div class="section-title">
       <span>WHAT'S NEXT</span>
       入社までにやること、入社後にやりたいこと
@@ -883,16 +473,16 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
   <div class="next-grid">
     <div class="next-card">
       <div class="next-num">入社まで ——</div>
-      <div class="next-title">アクチュアリー試験の基礎固め</div>
+      <div class="next-title">アクチュアリー試験の学習</div>
       <div class="next-body">
-        数学・確率論の体系的な学習を開始。Pythonと並行して試験科目の基礎を固める。「コードが書けるアクチュアリー候補生」という現在地をより確固たるものにする。
+        試験合格を最優先目標に据え、数学・確率論を体系的に学習する。最低でも12月の試験で数学は取れるような状態に持っていく。
       </div>
     </div>
     <div class="next-card">
       <div class="next-num">入社まで ——</div>
-      <div class="next-title">実データを使った分析精度の向上</div>
+      <div class="next-title">GitHub Copilotへの移行</div>
       <div class="next-body">
-        公開されている損保データセット（ISOサンプルデータ等）を使い、実際の業務に近い形でGLM・IBNRを再実装。「模擬データで動いた」から「実データで判断できる」レベルへ引き上げる。
+        今回の学習ではClaude AIを活用したが、AIG損保の主要ツールであるGitHub Copilotへの移行を進める。開発環境としてVS Codeはすでに整備済みであり、スムーズに移行できる見込み。
       </div>
     </div>
     <div class="next-card">
@@ -904,9 +494,9 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
     </div>
     <div class="next-card">
       <div class="next-num">入社後 ——</div>
-      <div class="next-title">AIツールを業務効率化に活用する</div>
+      <div class="next-title">AI活用で即戦力として貢献する</div>
       <div class="next-body">
-        今回の学習で確立した「AI × 自分の判断」という開発スタイルを実務に応用する。コードのドラフトはAIに任せ、数理的な検証・解釈・意思決定は自分で行うという役割分担を徹底する。
+        「AI × 自分の判断」という開発スタイルを実務に応用する。コードのドラフトはAIに任せ、数理的な検証・解釈・意思決定は自分で行う役割分担で、早期に生産性の高い仕事ができると考えている。
       </div>
     </div>
   </div>
@@ -919,47 +509,27 @@ reserve = var_99 - np.<span class="fn">mean</span>(sim_losses)
     「わからないことに気づいたら、<br>すぐ動く」—— これが私のスタイルです。
   </h2>
   <p class="closing-sub">
-    一次面接を終えて「アクチュアリーの実務を何も知らない」と気づいた翌日、Pythonの環境構築を始めました。エラーに詰まりながら、AIと対話しながら、それでも手を止めませんでした。このページはその記録です。
+    一次面接時にフィードバックをいただき、具体的な学習についてもご教示いただきました。そこからPythonの環境構築を始めました。エラーに詰まりながら、AIと対話しながら、それでも手を止めませんでした。このページはその記録です。
   </p>
   <a class="closing-link" href="https://github.com/yamadayuta1997/actuarial-portfolio" target="_blank">
     GitHub でコードを確認する →
-</a>
+  </a>
 </section>
 
-<footer>
-  <div>山田 雄太 · Actuarial Candidate · AIG損害保険 志望</div>
-  <div>Built with Python · Claude AI · VS Code · GitHub Pages</div>
-</footer>
-
 <script>
-// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      // Animate skill bars
       const bar = e.target.querySelector('.skill-bar');
-      if (bar) {
-        setTimeout(() => {
-          bar.style.width = bar.dataset.w + '%';
-        }, 100);
-      }
+      if (bar) setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 100);
     }
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.tl-item, .skill-card, .next-card').forEach(el => {
-  observer.observe(el);
-});
-
-// Stagger delays
-document.querySelectorAll('.skill-card').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.08) + 's';
-});
-
-document.querySelectorAll('.next-card').forEach((el, i) => {
-  el.style.transitionDelay = (i * 0.1) + 's';
-});
+document.querySelectorAll('.tl-item, .skill-card, .next-card').forEach(el => observer.observe(el));
+document.querySelectorAll('.skill-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+document.querySelectorAll('.next-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.1) + 's'; });
 </script>
 </body>
 </html>
